@@ -1,0 +1,22 @@
+yapf
+web-pdb
+ipdb
+flake8
+jedi
+ipython
+ptpython
+bpython
+## neovim
+## vim
+thefuck
+isort
+mistune
+psutil
+setproctitle
+pipenv
+youtube-dl
+youdao-wd
+pudb
+gdbgui
+jedi-language-server
+birdseye

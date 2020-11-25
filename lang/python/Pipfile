@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+yapf = "*"
+"flake8" = "*"
+jedi = "*"
+ipdb = "*"
+ipython = "*"
+ptpython = "*"
+neovim = "*"
+isort = "*"
+mistune = "*"
+psutil = "*"
+setproctitle = "*"
+python-language-server = "*"
+pipenv = "*"
+web-pdb = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"
