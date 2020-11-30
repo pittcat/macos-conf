@@ -1,0 +1,105 @@
+let g:spacevim_plug_home = '~/.vim/plugged'
+if g:spacevim.vim8
+  call spacevim#autocmd#escalt#Init()
+endif
+
+      " \ 'which-key',
+let g:spacevim_layers = [
+      \ 'spacevim', 'better-defaults',
+      \ 'vim-which-key',
+      \ 'programming',
+      \ 'tmux',
+      \ 'better-motion',
+      \ 'editing',
+      \ 'git',
+      \ 'tools-better',
+      \ 'self',
+      \ 'moe-ale',
+      \ 'latex',
+      \ 'cfamily',
+      \ 'html',
+      \ 'javascript',
+      \ 'markdown',
+      \ 'python',
+      \ 'rust',
+      \ 'coc',
+      \ 'fzf',
+      \ 'term',
+      \ 'sidebar',
+      \ 'repl',
+      \ 'yaml',
+      \ 'vista',
+      \ 'lightline',
+      \ 'vem'
+      \ ]
+
+      " \ 'autocomplete'
+      " \ 'codeformat',
+      " \ 'file-manager',
+" Put your private plugins here.
+function! UserInit()
+
+  " Space has been set as the default leader key,
+  " if you want to change it, uncomment and set it here.
+  " let g:spacevim_leader = "<\Space>"
+  let g:spacevim_localleader = ','
+  Plug 'tweekmonster/startuptime.vim'
+  Plug 'tpope/vim-scriptease'
+  Plug 'embear/vim-localvimrc'
+  Plug 'liuchengxu/space-vim-theme'
+  Plug 'junegunn/seoul256.vim'
+  Plug 'CodeFalling/fcitx-vim-osx',{'for':['markdown']}
+  Plug 'rlue/vim-barbaric'
+  Plug 'sainnhe/sonokai'
+  Plug 'wakatime/vim-wakatime',{'on':[]}
+endfunction
+
+
+
+" Put your costom configurations here, e.g., change the colorscheme.
+function! UserConfig()
+
+  let g:barbaric_ime = 'fcitx'
+
+  " The input method for Normal mode (as defined by `xkbswitch -g`, `ibus engine`, or `xkb-switch -p`)
+  let g:barbaric_default = 0
+
+  " The scope where alternate input methods persist (buffer, window, tab, global)
+  let g:barbaric_scope = 'buffer'
+
+  " Forget alternate input method after n seconds in Normal mode (disabled by default)
+  " Useful if you only need IM persistence for short bursts of active work.
+  let g:barbaric_timeout = -1
+
+  " The fcitx-remote binary (to distinguish between fcitx and fcitx5)
+  let g:barbaric_fcitx_cmd = 'fcitx5-remote'
+
+  " If you enable airline layer and have installed the powerline fonts, set it here.
+  " let g:airline_powerline_fonts=1
+  set termguicolors
+  color desert
+
+  nnoremap <silent> <localleader>tt :StartupTime<cr>
+  nnoremap <silent> <localleader>pu :UpdateRemotePlugins<cr>
+  let g:python3_host_prog='/Users/pittcat/.miniconda3/bin/python'
+  let g:python_host_prog='/usr/bin/python2.7'
+  " theme setting
+  " {
+  " colorscheme apprentice
+  " let g:seoul256_background = 236
+  " the configuration options should be placed before `colorscheme sonokai`
+  let g:sonokai_style = 'andromeda'
+  let g:sonokai_enable_italic = 0
+  let g:sonokai_disable_italic_comment = 1
+  let g:lightline = {'colorscheme' : 'sonokai'}
+  colorscheme sonokai
+  highlight Visual cterm=NONE ctermbg=0 ctermfg=NONE guibg=Gray40
+  " {
+  " highlight BufTabLineCurrent cterm=NONE ctermbg=15 ctermfg=8 gui=NONE guibg=#ffffff guifg=#d70000
+  " highlight BufTabLineHidden cterm=NONE ctermbg=3 ctermfg=32 gui=NONE guibg=#ffffff guifg=#1e90ff
+  "}
+  augroup load_wakatime
+      autocmd!
+      autocmd InsertEnter * call plug#load('vim-wakatime') | autocmd! load_wakatime
+  augroup END
+endfunction
